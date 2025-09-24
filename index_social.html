@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>صفحة وائل أبو فايز</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #000;
+      color: #fff;
+      text-align: center;
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 60vh;
+      background: url('https://i.ibb.co/zQ7wpz7/ring.jpg') center/cover no-repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      top:0; left:0;
+      width:100%; height:100%;
+      background: rgba(0,0,0,0.6);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 15px;
+      color: #ffcc00;
+      text-shadow: 2px 2px 10px #000;
+    }
+    .hero button {
+      padding: 15px 30px;
+      font-size: 18px;
+      background: #cc00cc;
+      border: none;
+      border-radius: 10px;
+      color: #fff;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .hero button:hover {
+      background: #ff66cc;
+    }
+
+    /* Profile Section */
+    .profile {
+      margin-top: -60px;
+      text-align: center;
+    }
+    .profile img {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      border: 4px solid #ffcc00;
+      object-fit: cover;
+      box-shadow: 0 0 15px #ffcc00;
+    }
+
+    /* Social Media */
+    .social {
+      margin: 25px 0;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .social a {
+      font-size: 32px;
+      color: #ffcc00;
+      transition: 0.3s;
+    }
+    .social a:hover {
+      color: #fff;
+    }
+
+    /* Popup */
+    .popup {
+      display: none;
+      position: fixed;
+      top:0; left:0;
+      width:100%; height:100%;
+      background: rgba(0,0,0,0.85);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    .popup-content {
+      background: #222;
+      padding: 25px;
+      border-radius: 15px;
+      text-align: center;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 0 15px #ffcc00;
+    }
+    .popup-content img {
+      width: 180px;
+      margin: 10px 0;
+      border-radius: 10px;
+    }
+    .close {
+      color: red;
+      cursor: pointer;
+      font-weight: bold;
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      font-size: 22px;
+    }
+    .done-btn {
+      display: block;
+      margin-top: 15px;
+      padding: 12px;
+      background: green;
+      color: #fff;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .wallet {
+      margin: 15px 0;
+      padding: 12px;
+      border: 1px solid #444;
+      border-radius: 10px;
+    }
+    .wallet h3 { margin: 5px 0; }
+    .wallet p {
+      font-size: 14px;
+      word-wrap: break-word;
+      color: #0f0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .wallet button {
+      padding: 5px 10px;
+      font-size: 13px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      background: #ffcc00;
+      color: #000;
+    }
+
+    @media(max-width:480px){
+      .hero h1{ font-size:2rem;}
+      .hero button{ font-size:16px; padding:12px 25px;}
+      .profile img{ width:120px; height:120px;}
+      .social a{ font-size:28px;}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>مرحبًا بك في مواقعي الاجتماعية</h1>
+      <button onclick="openPopup()">تبرع الآن</button>
+    </div>
+  </section>
+
+  <!-- Profile -->
+  <div class="profile">
+    <img src="11D7200C-A28B-4B05-BC5E-8556D910F278.jpeg" alt="صورتي">
+  </div>
+
+  <!-- Social Media Links -->
+  <div class="social">
+    <a href="https://wa.me/963996943510" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://t.me/waelabofayz" target="_blank" rel="noopener noreferrer"><i class="fab fa-telegram"></i></a>
+    <a href="https://www.snapchat.com/add/waelw2025335" target="_blank" rel="noopener noreferrer"><i class="fab fa-snapchat"></i></a>
+    <a href="https://x.com/fayz42566" target="_blank" rel="noopener noreferrer"><i class="fab fa-x-twitter"></i></a>
+  </div>
+
+  <!-- Popup -->
+  <div class="popup" id="donatePopup">
+    <div class="popup-content">
+      <span class="close" onclick="closePopup()">✖</span>
+      <h2>تبرع عبر شام كاش</h2>
+      <div class="wallet">
+        <h3>رقم المحفظة</h3>
+        <p id="walletNumber">
+          e74fc690b203af7fa6b5884b3f371075
+          <button onclick="copyWallet()">نسخ</button>
+        </p>
+        <img src="https://api.qrserver.com/v1/create-qr-code/?data=e74fc690b203af7fa6b5884b3f371075&size=180x180" alt="QR شام كاش">
+      </div>
+      <a class="done-btn" href="https://wa.me/963996943510?text=لقد%20تم%20التبرع%20عبر%20شام%20كاش">✅ تم التبرع</a>
+    </div>
+  </div>
+
+  <script>
+    function openPopup(){ document.getElementById("donatePopup").style.display="flex"; }
+    function closePopup(){ document.getElementById("donatePopup").style.display="none"; }
+    function copyWallet(){
+      const wallet = document.getElementById('walletNumber').innerText.split(' ')[0];
+      navigator.clipboard.writeText(wallet).then(()=>alert('تم نسخ رقم المحفظة'));
+    }
+  </script>
+
+</body>
+</html>
